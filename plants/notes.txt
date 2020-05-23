@@ -1,0 +1,33 @@
+Projekt URLi (endpointy)
+
+GET /categories/ -> list || lista kategorii
+POST /categories/ -> create || dodanie obiektu Category
+GET /categories/:id/ -> retrieve || pojedynczy obiekt Category
+PUT /categories/id/ -> update || aktualizacja obiektu Category
+PATCH /categories/:id/ -> partial_update
+DELETE /categories/:id/ -> destroy || usunięcie obiektu Category
+
+GET /rooms/ -> list || lista pokoi
+POST /rooms/ -> create || dodanie obiektu Room
+GET /rooms/:id/ -> retrieve || pojedynczy obiekt Room
+PUT /rooms/id/ -> update || aktualizacja obiektu Room
+PATCH /rooms/:id/ -> partial_update
+DELETE /rooms/:id/ -> destroy || usunięcie obiektu Room
+
+GET /categories/:id/plants -> list of Plants of that Category
+GET /rooms/:id/userplants/ -> list of UserPlants in that Room
+GET /plants/:id/userplants/ -> list of UserPlants of that Plant
+
+GET /plants/ -> list
+POST /plants/ -> create
+GET /plants/:id/ -> retrieve
+PUT /plants/id/ -> update
+PATCH /plants/:id/ -> partial_update
+DELETE /plants/:id/ -> destroy
+
+GET /userplants/ -> list
+POST /userplants/ -> create
+GET /userplants/:id/ -> retrieve
+PUT /userplants/id/ -> update
+PATCH /userplants/:id/ -> partial_update
+DELETE /userplants/:id/ -> destroy
