@@ -8,8 +8,11 @@ from .serializers import (
     CategorySerializer,
     AdminCategorySerializer,
     RoomSerializer,
+    AdminRoomSerializer,
     PlantSerializer,
+    AdminPlantSerializer,
     UserPlantSerializer,
+    AdminUserPlantSerializer,
     UserSerializer
 )
 
@@ -38,7 +41,11 @@ class CategoryViewSet(viewsets.ModelViewSet):  # 1
 
 
 class RoomViewSet(viewsets.ModelViewSet):  # 4...
-    serializer_class = RoomSerializer
+
+    def get_serializer_class(self):
+        if self.request.user.is_superuser:
+            return AdminRoomSerializer
+        return RoomSerializer
 
     def get_queryset(self):
         if self.request.user.is_superuser:
@@ -47,7 +54,11 @@ class RoomViewSet(viewsets.ModelViewSet):  # 4...
 
 
 class PlantViewSet(viewsets.ModelViewSet):
-    serializer_class = PlantSerializer
+
+    def get_serializer_class(self):
+        if self.request.user.is_superuser:
+            return AdminPlantSerializer
+        return PlantSerializer
 
     def get_queryset(self):
         if self.request.user.is_superuser:
@@ -56,7 +67,11 @@ class PlantViewSet(viewsets.ModelViewSet):
 
 
 class UserPlantViewSet(viewsets.ModelViewSet):
-    serializer_class = UserPlantSerializer
+
+    def get_serializer_class(self):
+        if self.request.user.is_superuser:
+            return AdminUserPlantSerializer
+        return UserPlantSerializer
 
     def get_queryset(self):
         if self.request.user.is_superuser:

@@ -30,11 +30,7 @@ class CategorySerializer(AdminCategorySerializer):
     )
 
 
-class PlantSerializer(serializers.ModelSerializer):
-    user = serializers.HiddenField(
-        default=serializers.CurrentUserDefault()
-    )
-
+class AdminPlantSerializer(serializers.ModelSerializer):
     class Meta:
         model = Plant
         fields = [
@@ -48,16 +44,18 @@ class PlantSerializer(serializers.ModelSerializer):
             'required_temperature',
             'blooming',
             'difficulty',
-            'user',  # homework -> hidden field
+            'user',
             'url',
         ]
 
 
-class RoomSerializer(serializers.ModelSerializer):
+class PlantSerializer(serializers.ModelSerializer):
     user = serializers.HiddenField(
         default=serializers.CurrentUserDefault()
-    )  # dokończyć serializery :D
+    )
 
+
+class AdminRoomSerializer(serializers.ModelSerializer):
     class Meta:
         model = Room
         fields = [
@@ -68,16 +66,18 @@ class RoomSerializer(serializers.ModelSerializer):
             'humidity',
             'temperature',
             'drafty',
-            'user',  # homework -> hidden field
+            'user',
             'url',
         ]
 
 
-class UserPlantSerializer(serializers.ModelSerializer):
+class RoomSerializer(serializers.ModelSerializer):
     user = serializers.HiddenField(
         default=serializers.CurrentUserDefault()
     )
 
+
+class AdminUserPlantSerializer(serializers.ModelSerializer):
     class Meta:
         model = UserPlant
         fields = [
@@ -89,9 +89,15 @@ class UserPlantSerializer(serializers.ModelSerializer):
             'last_watered',
             'last_fertilized',
             'image_url',
-            'user',  # homework -> hidden field
+            'user',
             'url',
         ]
+
+
+class UserPlantSerializer(serializers.ModelSerializer):
+    user = serializers.HiddenField(
+        default=serializers.CurrentUserDefault()
+    )
 
 
 class UserSerializer(serializers.ModelSerializer):
